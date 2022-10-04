@@ -20,7 +20,6 @@ from smartstore import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('',include('smartapp.urls'))
     path('',include('credentialapp.urls'))
 ]
 if settings.DEBUG:
