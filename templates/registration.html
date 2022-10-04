@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+	<!-- Start Banner Area -->
+	 <section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Register</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">Register</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================registration Box Area =================-->
+	<script>
+		   function validateform()
+            {
+                var a=document.getElementById('email').value.trim();
+                var b=document.getElementById('pass').value.trim();
+                var c=document.getElementById('cpass').value.trim();
+                var d=document.getElementById('nam').value.trim();
+                var e=document.getElementById('addr').value.trim();
+                var f=document.getElementById('city').value.trim();
+                var g=document.getElementById('dist').value.trim();
+                var h=document.getElementById('pcode').value.trim();
+                var i=document.getElementById('phone').value.trim();
+				if(a=="")
+                {
+                    document.getElementById('eml').innerHTML="**Please Enter Email";
+                    return false;
+                }
+				if(a.indexOf('@')<=0){
+                    document.getElementById('eml').innerHTML="**Invalid  Email Address";
+                    return false;
+                }     
+                if ((a.charAt(a.length-4)!='.') && (a.charAt(a.length-3)!='.')) {
+                    document.getElementById('eml').innerHTML="**Invalid  Email Address";
+                    return false;
+                }
+				if(b=="")
+                {
+                    document.getElementById('pss').innerHTML="**please enter Password";
+                    return false;
+                }
+				if(c=="")
+                {
+                    document.getElementById('cpss').innerHTML="**please enter Confirm Password";
+                    return false;
+                }
+				if(b!=c)
+                {
+                    document.getElementById('cpss').innerHTML="**Incorrect Password";
+                    return false;
+                }
+				if(d=="")
+                {
+                    document.getElementById('nm').innerHTML="**Please Enter Name";
+                    return false;
+                }
+				if(e=="")
+                {
+                    document.getElementById('ad').innerHTML="**Please Enter Address";
+                    return false;
+                }
+				if(f=="")
+                {
+                    document.getElementById('ct').innerHTML="**Please Enter City";
+                    return false;
+                }
+				if(g=="")
+                {
+                    document.getElementById('dst').innerHTML="**Please Enter District";
+                    return false;
+                }
+				if(h=="")
+                {
+                    document.getElementById('pin').innerHTML="**Please Enter PostalCode";
+                    return false;
+                }
+				if(h.length>6||h.length<6){
+                  document.getElementById('pin').innerHTML="**Enter 6 digit valid Code";
+                  return false;
+                }
+				if(i=="")
+                {
+                    document.getElementById('ph').innerHTML="**Please Enter Number";
+                    return false;
+                }
+				if(i.length>10||i.length<10){
+                  document.getElementById('ph').innerHTML="**Enter 10 digit valid Number";
+                  return false;
+                }
+
+				else
+                {
+                    return true;
+                }
+			}
+			function onclear(){
+                document.getElementById('eml').innerHTML="";
+                document.getElementById('pss').innerHTML="";
+                document.getElementById('cpss').innerHTML="";
+                document.getElementById('nm').innerHTML="";
+                document.getElementById('ad').innerHTML="";
+                document.getElementById('ct').innerHTML="";
+                document.getElementById('dst').innerHTML="";
+                document.getElementById('pin').innerHTML="";
+                document.getElementById('ph').innerHTML="";				
+
+			}
+	</script>
+	<section class="login_box_area section_gap">
+		<div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+					<div class="reg_form_outer">
+						<form class="row detail_form" action="login.html" method="post" id="contactForm" novalidate="novalidate">
+                            <h3 style="color:rgb(249, 164, 61) ;">Profile</h3>&nbsp<h3>Details</h3>
+                            <p style="font-size:15px;">On this page you can modify your login credentials and personal data to be used during future purchases.</p>
+                             <p>To keep your account secure we recommend to avoid creating passwords that use:</p>   
+                             <ol>
+								<li>Dictionary words in any language.</li>
+								<li>Words spelled backwards, common misspellings, and abbreviations.</li>
+								<li>Sequences of repeated charactres. Examples:12345678, 22222,abcdefg, or adjacent letters on your keyboard(qwerty).</li>
+								<li>Personal information. Your name, birthday, driver's license, passportnumber, or similar information.</li>
+							 </ol>
+						</form>
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="reg_form_inner">
+						<h3>Register for a new account</h3>
+						<form class="row reg_form" action="{% url 'register' %}" method="post"  novalidate="novalidate" onsubmit="return validateform();">
+							{% csrf_token %}
+                            
+                            <h5>User Account Information</h5>
+                            
+                                <div class="col-md-12 form-group">                   
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" onclick=" return onclear()">
+                                    <span id="eml" style="color: red;"></span>
+								</div>
+                                <div class="col-md-12 form-group">
+                                    <input type="password" class="form-control" id="pass" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" onclick=" return onclear()">
+                                    <span id="pss" style="color: red;"></span>
+								</div>
+                                <div class="col-md-12 form-group">
+                                    <input type="password" class="form-control" id="cpass" name="cpwd" placeholder="Confirm Password" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'" onclick=" return onclear()">
+                                    <span id="cpss" style="color: red;"></span>
+								</div>
+                                <h5>Shipping Address</h5>
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="form-control" id="nam" name="nme" placeholder="Name" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" onclick=" return onclear()">
+                                    <span id="nm" style="color: red;"></span>
+								</div>
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="form-control" id="addr" name="hname" placeholder="House Name" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'" onclick=" return onclear()">
+                                    <span id="ad" style="color: red;"></span>
+								</div>
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="form-control" id="city" name="city" placeholder="City" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'City'" onclick=" return onclear()">
+                                    <span id="ct" style="color: red;"></span>
+								</div>
+                                <div class="col-md-12 form-group">
+                                <select class="form-control" name="district" id="dist" onfocus="this.placeholder = ''" onblur="this.placeholder = 'District'" onclick=" return onclear()">
+                                    <option value="">Select District</option>
+                                    <option value="Kannur">Kannur</option>
+                                    <option value="Kozhikode">Kozhikode</option>
+                                    <option value="Malapuram">Malapuram</option>
+                                    <option value="Thrissur">Thrissur</option>
+                                    <option value="Ernakulam">Ernakulam</option>
+                                    <option value="Idukki">Idukki</option>
+                                    <option value="Kottayam">Kottayam</option>
+                                    <option value="Alapuzha">Alapuzha</option>
+                                </select>
+								<span id="dst" style="color: red;"></span>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <input type="tel" class="form-control" id="pcode" name="pin" placeholder="Postal Code" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Postal Code'" onclick=" return onclear()">
+                                    <span id="pin" style="color: red;"></span>
+								</div>
+                                <div class="col-md-12 form-group">
+                                    <input type="tel" class="form-control" id="phone" name="phn" placeholder="phone" autocomplete="off" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone'" onclick=" return onclear()">
+                                    <span id="ph" style="color: red;"></span>
+								</div>
+							<div class="col-md-12 form-group">
+								<input type="submit" value="Register" name="btn" class="primary-btn">
+								
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Registration Box Area =================-->
+{% endblock %}
