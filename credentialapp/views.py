@@ -6,6 +6,7 @@ from hashlib import sha256
 def demo(request):
     request.session.flush()
     return render(request,"index.html")
+#Login page
 def login(request):
     return render(request,"login.html")
 def register(request):
