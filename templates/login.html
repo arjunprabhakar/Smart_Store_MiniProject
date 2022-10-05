@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 	<!-- Start Banner Area -->
 	 <section class="banner-area organic-breadcrumb">
 		<div class="container">
@@ -56,6 +57,7 @@
                 document.getElementById('pss').innerHTML="";
 		 }
 		 </script>
+
 	<section class="login_box_area section_gap">
 		<div class="container">
 			<div class="row">
@@ -69,24 +71,25 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="col-lg-6">
 					<div class="login_form_inner">
 						<h3>Login to enter</h3>
-						<form class="row login_form" action="#" method="post" id="contactForm" novalidate="novalidate" onsubmit="return validateform();">
+						<form class="row login_form" action="#" method="post" id="contactForm" novalidate="novalidate" onsubmit="return validateform();" >
 							{% csrf_token %}
 							<div class="col-md-12 form-group">
 								<input type="email" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" onclick=" return onclear()">
+								<!-- <i class="bi bi-info-circle-fill"></i>
+								<i class="bi bi-exclamation-circle-fill"></i>	 -->
 								<span id="eml" style="color: red;"></span>
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="pass" name="pass" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" onclick=" return onclear()">
+								<!-- <i class="bi bi-info-circle-fill"></i>
+								<i class="bi bi-exclamation-circle-fill"></i> -->
 								<span id="pss" style="color: red;"></span>
 							</div>
 							<div class="col-md-12 form-group">
-								<div class="creat_account">
-									<!-- <input type="checkbox" id="f-option2" name="selector">
-									<label for="f-option2">Keep me logged in</label> -->
-								</div>
 							</div>
 							<div class="col-md-12 form-group">
 								<button type="submit" value="submit" class="primary-btn">Log In</button>
