@@ -15,6 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.contrib.auth.models import User, Group
+
+
+admin.site.site_header = "Smart-Store-Admin"
+admin.site.site_title = "Smart-Store-Admin"
+admin.site.index_title = "Smart-Store-Admin"
+
+# Remove User and Group Details in Admin Panel
+admin.site.unregister(User)
+admin.site.unregister(Group)
 
 from smartstore import settings
 from django.conf.urls.static import static

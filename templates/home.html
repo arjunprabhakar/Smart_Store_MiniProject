@@ -17,7 +17,16 @@
 		</div>
 	</section>
 	<!-- End banner Area -->
+	{% include 'alert.html' %}
 
+	<script>
+		setTimeout(function(){
+		  if ($('#msg').length > 0){
+			$('#msg').remove();
+			}
+		  },4000)
+  
+	</script>
 
 	<!-- start product Area -->
 	<section class="owl-carousel active-product-area section_gap">

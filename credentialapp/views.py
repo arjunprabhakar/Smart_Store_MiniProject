@@ -22,8 +22,7 @@ def register(request):
         phone = request.POST.get('phn');
         pswd=sha256(password2.encode()).hexdigest()
         if reg_user.objects.filter(email=email).exists():
-            # print('email already exists')
-            # messages.error(request, 'email already exists')
+            messages.success(request, 'Email already exists....!!!!')
             return redirect('register')
         else:
             user=reg_user(email=email,password=pswd,name=username,house_name=hname,city=city,district=district,pincode=pincode,phone_no=phone)
@@ -49,9 +48,12 @@ def login(request):
             user_details=log_user.objects.get(email=email,password=password2)
             email=user_details.email
             request.session['email']=email
+            messages.success(request, 'Login successfully..!!')
             return redirect('home')
+           
         else:
             print("Invalid")
+            messages.success(request, 'Email or Password Incorrect..!!')
     return render(request,'login.html')
 
 #Customer Home Page

@@ -3,21 +3,31 @@
 {% block content %}
 
 	<!-- Start Banner Area -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	 <section class="banner-area organic-breadcrumb">
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
 					<h1>Register</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Register</a>
+						<h6 style="color:#fff ;">*********************</h6>
 					</nav>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- End Banner Area -->
 
+    {% include 'alert.html' %}
+
+  <script>
+	  setTimeout(function(){
+	    if ($('#msg').length > 0){
+	      $('#msg').remove();
+	      }
+	    },4000)
+
+  </script>
+	<!-- End Banner Area -->
 	<!--================registration Box Area =================-->
 	<script>
 		   function validateform()
